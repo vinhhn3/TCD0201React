@@ -6,6 +6,7 @@ import Users from "./components/users/Users";
 import axios from "axios";
 import Search from "./components/users/Search";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 
 class App extends Component {
   state = {
@@ -50,6 +51,7 @@ class App extends Component {
                 )}
               />
               <Route exact path="/about" component={About} />
+              <Route path="" component={NotFound} />
             </Switch>
           </div>
         </div>
