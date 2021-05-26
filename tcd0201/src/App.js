@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Navbar from "./components/layout/Navbar";
 import Users from "./components/users/Users";
 import axios from "axios";
+import Search from "./components/users/Search";
 
 class App extends Component {
   state = {
@@ -20,7 +21,13 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar title="TCD0201React" />
-        <Users users={this.state.users} showLoading={this.state.showLoading} />
+        <div className="container">
+          <Search />
+          <Users
+            users={this.state.users}
+            showLoading={this.state.showLoading}
+          />
+        </div>
       </div>
     );
   }
