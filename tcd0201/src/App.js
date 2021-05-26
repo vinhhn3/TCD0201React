@@ -28,12 +28,20 @@ class App extends Component {
     this.setState({ users: response.data.items, showLoading: false });
   };
 
+  clearUsers = (async) => {
+    this.setState({ users: [] });
+  };
+
   render() {
     return (
       <div className="App">
         <Navbar title="TCD0201React" />
         <div className="container">
-          <Search searchUsers={this.searchUsers} />
+          <Search
+            searchUsers={this.searchUsers}
+            clearUsers={this.clearUsers}
+            users={this.state.users}
+          />
           <Users
             users={this.state.users}
             showLoading={this.state.showLoading}

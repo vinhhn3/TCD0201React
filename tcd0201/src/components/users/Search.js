@@ -17,6 +17,11 @@ class Search extends Component {
     this.setState({ text: "" });
   };
 
+  clearButton = (e) => {
+    console.log("Clear button clicked ...");
+    this.props.clearUsers();
+  };
+
   render() {
     return (
       <div>
@@ -34,6 +39,16 @@ class Search extends Component {
             className="btn btn-dark btn-block"
           />
         </form>
+        {this.props.users.length > 0 ? (
+          <button
+            onClick={this.clearButton}
+            className="btn btn-light btn-block"
+          >
+            Clear
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     );
   }
