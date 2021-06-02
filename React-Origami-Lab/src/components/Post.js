@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Logo2 from './img/blue-origami-bird.png';
+import Logo2 from '../img/blue-origami-bird.png';
 
 Post.propTypes = {
     posts: PropTypes.array
