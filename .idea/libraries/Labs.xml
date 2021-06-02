@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Labs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Labs/React-Origami-Resources.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Labs/React-Origami-Rest_api.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
