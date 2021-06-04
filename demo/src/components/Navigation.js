@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logo from'.././logo.png';
+import {Link} from "react-router-dom"
 class Navigation extends Component {
     
     render() {
@@ -9,7 +10,7 @@ class Navigation extends Component {
                 <ul >
                     <li className="listItem"> <img src={logo} alt="logo"/></li>
                     {navbar && navbar.map(item=>{
-                        return <li className="listItem" key={item.id}> <a href={item.link}>{item.name}</a></li>
+                        return <li className="listItem" key={item.id}> <Link to={item.link}>{item.name}</Link></li>
                     })}
                     
                     
