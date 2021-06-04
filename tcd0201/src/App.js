@@ -8,6 +8,7 @@ import Search from "./components/users/Search";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import User from "./components/users/User"
+import DemoHook from "./hooks/DemoHook";
 
 class App extends Component {
   state = {
@@ -79,6 +80,7 @@ class App extends Component {
                 )}
               />
               <Route exact path="/about" component={About} />
+              <Route exact path="/demohook" component={DemoHook} />
               <Route exact path="/user/:login" render={(props) => (
                 <User
                   {...props}    // spread operator

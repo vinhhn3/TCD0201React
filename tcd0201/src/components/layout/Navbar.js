@@ -12,6 +12,9 @@ const Navbar = ({ title }) => {
         <li>
           <Link to="/about">About</Link>
         </li>
+        <li>
+          <Link to="/demohook">Demo React Hook</Link>
+        </li>
       </ul>
     </div>
   );

@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 class UserItem extends Component {
   render() {
     const { login, avatar_url } = this.props.user;
-
     return (
       <div className="card text-center">
         <img src={avatar_url} className="round-img" style={{ width: "60px" }} />
