@@ -52,10 +52,7 @@ class App extends Component {
           <Navbar title="TCD0201React" />
           <div className="container">
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={(props) => (
+              <Route exact path="/" render={(props) => (
                   <Fragment>
                     <Search
                       searchUsers={this.searchUsers}
