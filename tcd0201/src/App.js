@@ -14,6 +14,7 @@ class App extends Component {
     users: [],
     showLoading: false,
     user:{},
+    repos:[]
   };
 
   // Search User
@@ -36,9 +37,20 @@ class App extends Component {
     const response = await axios.get(
       `https://api.github.com/users/${username}`
     );
-    console.log(response);
     this.setState({
       user: response.data,
+      showLoading: false
+    });
+  }
+
+  // Get Repos
+  getRepos = async (username) => {
+    const response = await axios.get(
+      `https://api.github.com/users/${username}/repos`
+    );
+    console.log(response);
+    this.setState({
+      repos: response.data,
       showLoading: false
     });
   }
@@ -71,7 +83,9 @@ class App extends Component {
                 <User
                   {...props}    // spread operator
                   getUser = {this.getUser}
+                  getRepos = {this.getRepos}
                   user = {this.state.user}
+                  repos = {this.state.repos}
                   showLoading = {this.state.showLoading}
                 />
               )}/>

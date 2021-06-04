@@ -1,9 +1,12 @@
 import React, {Component, Fragment} from 'react';
 import {Link} from "react-router-dom";
+import axios from "axios";
+import Repos from "../repos/Repos";
 
 class User extends Component {
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getRepos(this.props.match.params.login);
   }
   render() {
     const{
@@ -24,6 +27,7 @@ class User extends Component {
     } = this.props.user;
 
     const {showLoading} = this.props;
+    const {repos} = this.props;
 
     if (showLoading){
       return <h1>Loading...</h1>;
@@ -97,7 +101,7 @@ class User extends Component {
             <div className="badge badge-success">Following: {following}</div>
             <div className="badge badge-dark">Public Repos: {public_repos}</div>
             <div className="badge badge-light">Public Gists: {public_gists}</div>
-
+          <Repos repos={repos}/>
           </div>
         </>
       );
