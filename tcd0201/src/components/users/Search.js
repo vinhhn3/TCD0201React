@@ -1,57 +1,52 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 
-class Search extends Component {
-  state = {
-    text: "",
-  };
+const Search = (props) => {
+  const [text, setText] = useState("");
 
-  onChange = (e) => {
+  const onChange = (e) => {
     // console.log(e.target.value);
-    this.setState({ text: e.target.value });
+    // this.setState({ text: e.target.value });
+    setText(e.target.value);
   };
 
-  onSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    this.props.searchUsers(this.state.text);
+    props.searchUsers(text);
     // console.log(this.state.text);
-    this.setState({ text: "" });
+    // this.setState({ text: "" });
+    setText("");
   };
 
-  clearButton = (e) => {
+  const clearButton = (e) => {
     console.log("Clear button clicked ...");
-    this.props.clearUsers();
+    props.clearUsers();
   };
 
-  render() {
-    return (
-      <div>
-        <form className="form" onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            name="text"
-            placeholder="Search User ..."
-            onChange={this.onChange}
-            value={this.state.text}
-          />
-          <input
-            type="submit"
-            value="Search"
-            className="btn btn-dark btn-block"
-          />
-        </form>
-        {this.props.users.length > 0 ? (
-          <button
-            onClick={this.clearButton}
-            className="btn btn-light btn-block"
-          >
-            Clear
-          </button>
-        ) : (
-          ""
-        )}
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <form className="form" onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="text"
+          placeholder="Search User ..."
+          onChange={onChange}
+          value={text}
+        />
+        <input
+          type="submit"
+          value="Search"
+          className="btn btn-dark btn-block"
+        />
+      </form>
+      {props.users.length > 0 ? (
+        <button onClick={clearButton} className="btn btn-light btn-block">
+          Clear
+        </button>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
 
 export default Search;
