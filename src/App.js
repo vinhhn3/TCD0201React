@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import React from 'react';
 import Main from './components/Post/Main';
 import Thoughts from "./components/Thoughts/Thoughts"
@@ -22,23 +22,15 @@ function App() {
         <div className='Container'>
           <Aside />
           <Switch>
+            {loginStatus === false && <Redirect exact from="/profile" to="/login" />}
+            {loginStatus === true && <Redirect exact from="/login" to="/" />}
+            {loginStatus === true && <Redirect exact from="/register" to="/" />}
+
             <Route exact path="/" component={Main} />
             <Route exact path="/thoughts" component={Thoughts} />
-            <Route path="/register" render={() => {
-              return loginStatus === false
-                ? <RegisterForm />
-                : <Main />
-            }} />
-            <Route path="/login" render={() => {
-              return loginStatus === false
-                ? <LoginForm />
-                : <Main />
-            }} />
-            <Route path="/profile" render={() => {
-              return loginStatus === true
-                ? <Profile />
-                : <LoginForm />
-            }} />
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/login" component={LoginForm} />
+            <Route path="/profile" component={Profile} />
             <Route path="" component={Four0Four} />
           </Switch>
         </div>
