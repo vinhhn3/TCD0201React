@@ -53,8 +53,8 @@ class App extends Component {
       },
       {
         id: 6,
-        name: '######',
-        link: '#'
+        name: 'Profile',
+        link: '/profile'
       },
     ]
     this.setState({ dataNav: data })

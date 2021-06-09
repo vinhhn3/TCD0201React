@@ -6,6 +6,7 @@ import NotFound from './NotFound'
 import About from './About'
 import Register from './Register'
 import Login from './Login'
+import ProfileView from './ProfileView'
 class Main extends Component {
     render() {
         return (
@@ -16,6 +17,7 @@ class Main extends Component {
                         <Route path='/sharethought' exact component={ShareThought}></Route>
                         <Route path='/register' exact component={Register}></Route>
                         <Route path='/login' exact component={Login}></Route>
+                        <Route path='/profile' exact component={ProfileView}></Route>
                         <Route component={NotFound}></Route>
                     </Switch>
                     
