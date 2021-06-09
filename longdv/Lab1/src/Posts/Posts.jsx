@@ -38,9 +38,9 @@ class Posts extends React.Component {
                 key={post.id}
                 imageUrl="/blue-origami-bird.png"
                 imageAlt="alt"
-                author=" Tui do chu ai"
+                author="It's me"
               >
-                1 con ngua, 2 con ngua, 3 con ngua... Uong Dr Thanh giai doc giai ngua
+                Somethings
               </Post>
             ))}
           </div>
