@@ -6,7 +6,7 @@ import GithubContext from "../../context/github/githubContext";
 
 const User = (props) => {
   const githubContext = useContext(GithubContext);
-  const { getUser, getRepos, user, showLoading, repos } = githubContext;
+  const { getUser, getRepos, user, showLoading } = githubContext;
   useEffect(() => {
     getUser(props.match.params.login);
     getRepos(props.match.params.login);
@@ -105,7 +105,7 @@ const User = (props) => {
           <div className="badge badge-success">Following: {following}</div>
           <div className="badge badge-dark">Public Repos: {public_repos}</div>
           <div className="badge badge-light">Public Gists: {public_gists}</div>
-          <Repos repos={repos} />
+          <Repos />
         </div>
       </>
     );
