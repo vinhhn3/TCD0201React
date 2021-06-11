@@ -12,7 +12,7 @@ import DemoHook from "./hooks/DemoHook";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const [showLoading, setLoading] = useState(false);
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
@@ -30,10 +30,10 @@ const App = () => {
   // };
 
   // Clear Users from State
-  const clearUsers = async () => {
-    // this.setState({ users: [] });
-    setUsers([]);
-  };
+  // const clearUsers = async () => {
+  //   // this.setState({ users: [] });
+  //   setUsers([]);
+  // };
 
   // Get a Single User
   const getUser = async (username) => {
@@ -75,8 +75,8 @@ const App = () => {
                 path="/"
                 render={() => (
                   <Fragment>
-                    <Search clearUsers={clearUsers} />
-                    <Users users={users} showLoading={showLoading} />
+                    <Search />
+                    <Users showLoading={showLoading} />
                   </Fragment>
                 )}
               />

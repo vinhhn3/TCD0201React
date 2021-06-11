@@ -43,6 +43,14 @@ const GithubState = (props) => {
     });
   };
 
+  // Clear Users
+  const clearUsers = async () => {
+    // this.setState({ users: [] });
+    dispatch({
+      type: CLEAR_USERS,
+    });
+  };
+
   return (
     <GithubContext.Provider
       value={{
@@ -51,6 +59,7 @@ const GithubState = (props) => {
         showLoading: state.showLoading,
         repos: state.repos,
         searchUsers,
+        clearUsers,
       }}
     >
       {props.children}

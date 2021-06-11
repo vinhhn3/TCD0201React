@@ -20,7 +20,7 @@ const Search = (props) => {
 
   const clearButton = (e) => {
     console.log("Clear button clicked ...");
-    props.clearUsers();
+    githubContext.clearUsers();
   };
 
   return (
