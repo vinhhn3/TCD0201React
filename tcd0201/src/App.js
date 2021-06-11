@@ -9,6 +9,7 @@ import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import User from "./components/users/User";
 import DemoHook from "./hooks/DemoHook";
+import GithubState from "./context/github/GithubState";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -63,46 +64,48 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="App">
-        <Navbar title="TCD0201React" />
-        <div className="container">
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Fragment>
-                  <Search
-                    searchUsers={searchUsers}
-                    clearUsers={clearUsers}
-                    users={users}
+    <GithubState>
+      <Router>
+        <div className="App">
+          <Navbar title="TCD0201React" />
+          <div className="container">
+            <Switch>
+              <Route
+                exact
+                path="/"
+                render={() => (
+                  <Fragment>
+                    <Search
+                      searchUsers={searchUsers}
+                      clearUsers={clearUsers}
+                      users={users}
+                    />
+                    <Users users={users} showLoading={showLoading} />
+                  </Fragment>
+                )}
+              />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/demohook" component={DemoHook} />
+              <Route
+                exact
+                path="/user/:login"
+                render={(props) => (
+                  <User
+                    {...props} // spread operator
+                    getUser={getUser}
+                    getRepos={getRepos}
+                    user={user}
+                    repos={repos}
+                    showLoading={showLoading}
                   />
-                  <Users users={users} showLoading={showLoading} />
-                </Fragment>
-              )}
-            />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/demohook" component={DemoHook} />
-            <Route
-              exact
-              path="/user/:login"
-              render={(props) => (
-                <User
-                  {...props} // spread operator
-                  getUser={getUser}
-                  getRepos={getRepos}
-                  user={user}
-                  repos={repos}
-                  showLoading={showLoading}
-                />
-              )}
-            />
-            <Route path="" component={NotFound} />
-          </Switch>
+                )}
+              />
+              <Route path="" component={NotFound} />
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </GithubState>
   );
 };
 
