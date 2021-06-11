@@ -1,11 +1,13 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Repos from "../repos/Repos";
+import GithubContext from "../../context/github/githubContext";
 
 const User = (props) => {
+  const githubContext = useContext(GithubContext);
   useEffect(() => {
-    props.getUser(props.match.params.login);
+    githubContext.getUser(props.match.params.login);
     props.getRepos(props.match.params.login);
   }, []);
   const {
@@ -23,9 +25,9 @@ const User = (props) => {
     following,
     bio,
     blog,
-  } = props.user;
+  } = githubContext.user;
 
-  const { showLoading } = props;
+  const { showLoading } = githubContext;
   const { repos } = props;
 
   if (showLoading) {

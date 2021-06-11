@@ -36,19 +36,19 @@ const App = () => {
   // };
 
   // Get a Single User
-  const getUser = async (username) => {
-    // this.setState({ showLoading: true });
-    setLoading(true);
-    const response = await axios.get(
-      `https://api.github.com/users/${username}`
-    );
-    // this.setState({
-    //   user: response.data,
-    //   showLoading: false,
-    // });
-    setUser(response.data);
-    setLoading(false);
-  };
+  // const getUser = async (username) => {
+  //   // this.setState({ showLoading: true });
+  //   setLoading(true);
+  //   const response = await axios.get(
+  //     `https://api.github.com/users/${username}`
+  //   );
+  //   // this.setState({
+  //   //   user: response.data,
+  //   //   showLoading: false,
+  //   // });
+  //   setUser(response.data);
+  //   setLoading(false);
+  // };
 
   // Get Repos
   const getRepos = async (username) => {
@@ -88,11 +88,11 @@ const App = () => {
                 render={(props) => (
                   <User
                     {...props} // spread operator
-                    getUser={getUser}
+                    // getUser={getUser}
                     getRepos={getRepos}
-                    user={user}
+                    // user={user}
                     repos={repos}
-                    showLoading={showLoading}
+                    // showLoading={showLoading}
                   />
                 )}
               />
