@@ -4,13 +4,14 @@ import GithubContext from "../../context/github/githubContext";
 
 const Users = () => {
   const githubContext = useContext(GithubContext);
+  const { showLoading, users } = githubContext;
 
-  if (githubContext.showLoading) {
+  if (showLoading) {
     return <h1>Loading ...</h1>;
   } else {
     return (
       <div style={userStyle}>
-        {githubContext.users.map((user) => (
+        {users.map((user) => (
           <UserItem key={user.id} user={user} />
         ))}
       </div>

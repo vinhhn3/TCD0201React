@@ -1,22 +1,23 @@
 import React, { Component, useState, useContext } from "react";
 import GithubContext from "../../context/github/githubContext";
 
-const Search = (props) => {
+const Search = () => {
   const [text, setText] = useState("");
   const githubContext = useContext(GithubContext);
+  const { users, searchUsers, clearUsers } = githubContext;
   const onChange = (e) => {
     setText(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    githubContext.searchUsers(text);
+    searchUsers(text);
     setText("");
   };
 
   const clearButton = (e) => {
     console.log("Clear button clicked ...");
-    githubContext.clearUsers();
+    clearUsers();
   };
 
   return (
@@ -35,7 +36,7 @@ const Search = (props) => {
           className="btn btn-dark btn-block"
         />
       </form>
-      {githubContext.users.length > 0 ? (
+      {users.length > 0 ? (
         <button onClick={clearButton} className="btn btn-light btn-block">
           Clear
         </button>

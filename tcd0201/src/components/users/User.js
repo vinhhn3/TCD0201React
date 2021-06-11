@@ -6,9 +6,10 @@ import GithubContext from "../../context/github/githubContext";
 
 const User = (props) => {
   const githubContext = useContext(GithubContext);
+  const { getUser, getRepos, user, showLoading, repos } = githubContext;
   useEffect(() => {
-    githubContext.getUser(props.match.params.login);
-    githubContext.getRepos(props.match.params.login);
+    getUser(props.match.params.login);
+    getRepos(props.match.params.login);
   }, []);
   const {
     name,
@@ -25,10 +26,7 @@ const User = (props) => {
     following,
     bio,
     blog,
-  } = githubContext.user;
-
-  const { showLoading } = githubContext;
-  const { repos } = githubContext;
+  } = user;
 
   if (showLoading) {
     return <h1>Loading...</h1>;

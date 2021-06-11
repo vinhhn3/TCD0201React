@@ -10,26 +10,9 @@ import NotFound from "./pages/NotFound";
 import User from "./components/users/User";
 import DemoHook from "./hooks/DemoHook";
 import GithubState from "./context/github/GithubState";
+import Home from "./components/users/Home";
 
 const App = () => {
-  // // const [users, setUsers] = useState([]);
-  // const [showLoading, setLoading] = useState(false);
-  // const [user, setUser] = useState({});
-  // const [repos, setRepos] = useState([]);
-
-  // Get Repos
-  // const getRepos = async (username) => {
-  //   const response = await axios.get(
-  //     `https://api.github.com/users/${username}/repos`
-  //   );
-  //   // this.setState({
-  //   //   repos: response.data,
-  //   //   showLoading: false,
-  //   // });
-  //   setRepos(response.data);
-  //   setLoading(false);
-  // };
-
   return (
     <GithubState>
       <Router>
@@ -37,16 +20,7 @@ const App = () => {
           <Navbar title="TCD0201React" />
           <div className="container">
             <Switch>
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <Fragment>
-                    <Search />
-                    <Users />
-                  </Fragment>
-                )}
-              />
+              <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />
               <Route exact path="/demohook" component={DemoHook} />
               <Route

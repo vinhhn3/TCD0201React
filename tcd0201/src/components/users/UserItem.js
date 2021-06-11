@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import GithubContext from "../../context/github/githubContext";
 
 const UserItem = (props) => {
   const { login, avatar_url } = props.user;
