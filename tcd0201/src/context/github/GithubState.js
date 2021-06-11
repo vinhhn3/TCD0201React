@@ -9,6 +9,7 @@ import {
 import GithubContext from "./githubContext";
 import GithubReducer from "./githubReducer";
 import { useReducer } from "react";
+import axios from "axios";
 
 const GithubState = (props) => {
   const initialState = {
@@ -20,6 +21,28 @@ const GithubState = (props) => {
 
   const [state, dispatch] = useReducer(GithubReducer, initialState);
 
+  // Search Users
+  const searchUsers = async (text) => {
+    // this.setState({ showLoading: true });
+    setLoading();
+    const response = await axios.get(
+      `https://api.github.com/search/users?q=${text}`
+    );
+    // this.setState({ users: response.data.items, showLoading: false });
+    dispatch({
+      type: SEARCH_USERS,
+      payload: response.data.items,
+    });
+    setLoading(false);
+  };
+
+  // Set Loading to True
+  const setLoading = () => {
+    dispatch({
+      type: SET_LOADING,
+    });
+  };
+
   return (
     <GithubContext.Provider
       value={{
@@ -27,6 +50,7 @@ const GithubState = (props) => {
         user: state.user,
         showLoading: state.showLoading,
         repos: state.repos,
+        searchUsers,
       }}
     >
       {props.children}

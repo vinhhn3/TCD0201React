@@ -18,16 +18,16 @@ const App = () => {
   const [repos, setRepos] = useState([]);
 
   // Search User
-  const searchUsers = async (text) => {
-    // this.setState({ showLoading: true });
-    setLoading(true);
-    const response = await axios.get(
-      `https://api.github.com/search/users?q=${text}`
-    );
-    // this.setState({ users: response.data.items, showLoading: false });
-    setUsers(response.data.items);
-    setLoading(false);
-  };
+  // const searchUsers = async (text) => {
+  //   // this.setState({ showLoading: true });
+  //   setLoading(true);
+  //   const response = await axios.get(
+  //     `https://api.github.com/search/users?q=${text}`
+  //   );
+  //   // this.setState({ users: response.data.items, showLoading: false });
+  //   setUsers(response.data.items);
+  //   setLoading(false);
+  // };
 
   // Clear Users from State
   const clearUsers = async () => {
@@ -75,11 +75,7 @@ const App = () => {
                 path="/"
                 render={() => (
                   <Fragment>
-                    <Search
-                      searchUsers={searchUsers}
-                      clearUsers={clearUsers}
-                      users={users}
-                    />
+                    <Search clearUsers={clearUsers} />
                     <Users users={users} showLoading={showLoading} />
                   </Fragment>
                 )}
