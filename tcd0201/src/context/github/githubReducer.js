@@ -24,12 +24,20 @@ export default (state, action) => {
       return {
         ...state,
         users: [],
+        showLoading: false,
       };
 
     case GET_USER:
       return {
         ...state,
         user: action.payload,
+        showLoading: false,
+      };
+
+    case GET_REPOS:
+      return {
+        ...state,
+        repos: action.payload,
         showLoading: false,
       };
     default:

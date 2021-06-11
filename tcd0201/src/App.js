@@ -12,56 +12,23 @@ import DemoHook from "./hooks/DemoHook";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
-  // const [users, setUsers] = useState([]);
-  const [showLoading, setLoading] = useState(false);
-  const [user, setUser] = useState({});
-  const [repos, setRepos] = useState([]);
-
-  // Search User
-  // const searchUsers = async (text) => {
-  //   // this.setState({ showLoading: true });
-  //   setLoading(true);
-  //   const response = await axios.get(
-  //     `https://api.github.com/search/users?q=${text}`
-  //   );
-  //   // this.setState({ users: response.data.items, showLoading: false });
-  //   setUsers(response.data.items);
-  //   setLoading(false);
-  // };
-
-  // Clear Users from State
-  // const clearUsers = async () => {
-  //   // this.setState({ users: [] });
-  //   setUsers([]);
-  // };
-
-  // Get a Single User
-  // const getUser = async (username) => {
-  //   // this.setState({ showLoading: true });
-  //   setLoading(true);
-  //   const response = await axios.get(
-  //     `https://api.github.com/users/${username}`
-  //   );
-  //   // this.setState({
-  //   //   user: response.data,
-  //   //   showLoading: false,
-  //   // });
-  //   setUser(response.data);
-  //   setLoading(false);
-  // };
+  // // const [users, setUsers] = useState([]);
+  // const [showLoading, setLoading] = useState(false);
+  // const [user, setUser] = useState({});
+  // const [repos, setRepos] = useState([]);
 
   // Get Repos
-  const getRepos = async (username) => {
-    const response = await axios.get(
-      `https://api.github.com/users/${username}/repos`
-    );
-    // this.setState({
-    //   repos: response.data,
-    //   showLoading: false,
-    // });
-    setRepos(response.data);
-    setLoading(false);
-  };
+  // const getRepos = async (username) => {
+  //   const response = await axios.get(
+  //     `https://api.github.com/users/${username}/repos`
+  //   );
+  //   // this.setState({
+  //   //   repos: response.data,
+  //   //   showLoading: false,
+  //   // });
+  //   setRepos(response.data);
+  //   setLoading(false);
+  // };
 
   return (
     <GithubState>
@@ -76,7 +43,7 @@ const App = () => {
                 render={() => (
                   <Fragment>
                     <Search />
-                    <Users showLoading={showLoading} />
+                    <Users />
                   </Fragment>
                 )}
               />
@@ -88,11 +55,6 @@ const App = () => {
                 render={(props) => (
                   <User
                     {...props} // spread operator
-                    // getUser={getUser}
-                    getRepos={getRepos}
-                    // user={user}
-                    repos={repos}
-                    // showLoading={showLoading}
                   />
                 )}
               />

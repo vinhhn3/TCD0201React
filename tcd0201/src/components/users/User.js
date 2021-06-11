@@ -8,7 +8,7 @@ const User = (props) => {
   const githubContext = useContext(GithubContext);
   useEffect(() => {
     githubContext.getUser(props.match.params.login);
-    props.getRepos(props.match.params.login);
+    githubContext.getRepos(props.match.params.login);
   }, []);
   const {
     name,
@@ -28,7 +28,7 @@ const User = (props) => {
   } = githubContext.user;
 
   const { showLoading } = githubContext;
-  const { repos } = props;
+  const { repos } = githubContext;
 
   if (showLoading) {
     return <h1>Loading...</h1>;

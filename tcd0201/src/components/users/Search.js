@@ -5,16 +5,12 @@ const Search = (props) => {
   const [text, setText] = useState("");
   const githubContext = useContext(GithubContext);
   const onChange = (e) => {
-    // console.log(e.target.value);
-    // this.setState({ text: e.target.value });
     setText(e.target.value);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     githubContext.searchUsers(text);
-    // console.log(this.state.text);
-    // this.setState({ text: "" });
     setText("");
   };
 

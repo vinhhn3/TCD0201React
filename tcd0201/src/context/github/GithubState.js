@@ -23,17 +23,14 @@ const GithubState = (props) => {
 
   // Search Users
   const searchUsers = async (text) => {
-    // this.setState({ showLoading: true });
     setLoading();
     const response = await axios.get(
       `https://api.github.com/search/users?q=${text}`
     );
-    // this.setState({ users: response.data.items, showLoading: false });
     dispatch({
       type: SEARCH_USERS,
       payload: response.data.items,
     });
-    setLoading(false);
   };
 
   // Set Loading to True
@@ -45,7 +42,6 @@ const GithubState = (props) => {
 
   // Clear Users
   const clearUsers = async () => {
-    // this.setState({ users: [] });
     dispatch({
       type: CLEAR_USERS,
     });
@@ -53,7 +49,6 @@ const GithubState = (props) => {
 
   // Get a Single User
   const getUser = async (username) => {
-    // this.setState({ showLoading: true });
     setLoading();
     const response = await axios.get(
       `https://api.github.com/users/${username}`
@@ -61,6 +56,17 @@ const GithubState = (props) => {
 
     dispatch({
       type: GET_USER,
+      payload: response.data,
+    });
+  };
+
+  // Get Repos
+  const getRepos = async (username) => {
+    const response = await axios.get(
+      `https://api.github.com/users/${username}/repos`
+    );
+    dispatch({
+      type: GET_REPOS,
       payload: response.data,
     });
   };
@@ -75,6 +81,7 @@ const GithubState = (props) => {
         searchUsers,
         clearUsers,
         getUser,
+        getRepos,
       }}
     >
       {props.children}
