@@ -1,13 +1,13 @@
-import OrigamiContext from "./origamiContext";
-import OrigamiReducer from "./origamiReducer";
-import { useReducer } from "react";
 import axios from "axios";
+import { useReducer } from "react";
 import {
-  USER_LOGIN,
-  USER_LOGOUT,
   GET_ALL_POSTS,
   GET_PRIVATE_POSTS,
+  USER_LOGIN,
+  USER_LOGOUT,
 } from "../types";
+import OrigamiContext from "./origamiContext";
+import OrigamiReducer from "./origamiReducer";
 
 const OrigamiState = (props) => {
   const initialState = {

@@ -2,9 +2,7 @@ import "./App.css";
 import React, { Fragment, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
-import Users from "./components/users/Users";
-import axios from "axios";
-import Search from "./components/users/Search";
+
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import User from "./components/users/User";
@@ -17,7 +15,7 @@ const App = () => {
     <GithubState>
       <Router>
         <div className="App">
-          <Navbar title="TCD0201React" />
+          <Navbar />
           <div className="container">
             <Switch>
               <Route exact path="/" component={Home} />
